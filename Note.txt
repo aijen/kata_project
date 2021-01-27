@@ -1,0 +1,1 @@
+Utiliser lambda expression dans l'enum

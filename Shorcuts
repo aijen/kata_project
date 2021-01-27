@@ -1,0 +1,28 @@
+Ctrl + Alt + V : extract local variable
+Ctrl + Alt + M : extract method
+
+Shift + F6 : rename
+
+Ctrl + Alt + T : Générer / se déplacer test
+
+Shift + F10 : relance les derniers tests
+
+CTRL + Shift + F10 : lancer les test de la nouvelle class
+
+Ctrl + shift + haut ou bas : déplacer une ligne
+
+Ctrl + y : supprimer une ligne
+
+Ctrl + d : dupplicer
+
+alt + entrer: donne des propositions de modification dans le block
+
+F4 : pour aller au java doc
+
+Ctrl +F12 : pour voir la liste des fonctions
+
+F2: aller au prohain warn
+
+Ctrl + F2 : aller au warning précédent
+
+Alt + entre :  complément de Ctrl + F2
