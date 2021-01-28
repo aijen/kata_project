@@ -22,5 +22,18 @@ Once this calculator works, add the SQRT operator:
 Once the SQRT operator has been added, add the MAX operator:
 
 5 8 1 4 2 MAX => 8
+5 8 1 4 2
+5 8 1 4
+5 8 4
+5 8
+8
+
+4 2 + 3 -
+4 2 +
+6 3 -
+
+
+5 8 1 4 2 MAX
+5 8 1 4 2
 
 ArrayDeque

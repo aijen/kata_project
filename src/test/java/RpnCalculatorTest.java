@@ -181,6 +181,18 @@ class RpnCalculatorTest {
         assertThat(result).isEqualTo(8);
     }
 
+    @Test
+    public void should_return_5_if_5_MAX_input(){
+        //GIVEN
+        String input ="5 MAX";
+
+        //WHEN
+        int result = new RpnCalculator().rpnExpression(input);
+
+        //ASSERT
+        assertThat(result).isEqualTo(5);
+    }
+
 
 
 }

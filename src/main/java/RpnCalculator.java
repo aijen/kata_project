@@ -1,6 +1,9 @@
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RpnCalculator {
 
@@ -12,12 +15,9 @@ public class RpnCalculator {
                 numbers.add(Integer.parseInt(c));
             } else {
                 Operation operation = findOperation(c);
-                int firstNumber = 0;
-                if (!operation.equals(Operation.SQRT))
-                    firstNumber = numbers.removeLast();
-                int secondNumber = numbers.removeLast();
-                int calculate = operation.calculate(secondNumber, firstNumber);
+                int calculate = operation.calculate(numbers);
                 numbers.add(calculate);
+
             }
         });
         return numbers.getLast();
@@ -44,41 +44,53 @@ public class RpnCalculator {
     enum Operation {
         DIVISTION {
             @Override
-            int calculate(Integer... numbers) {
-                return numbers[0] / numbers[1];
+            int calculate(ArrayDeque<Integer> numbers) {
+                int firstNumber = numbers.removeLast();
+                int secondNumber = numbers.removeLast();
+                return secondNumber / firstNumber;
             }
         }, MULTIPLICATION {
             @Override
-            int calculate(Integer... numbers) {
-                return numbers[0] * numbers[1];
+            int calculate(ArrayDeque<Integer> numbers) {
+                int firstNumber = numbers.removeLast();
+                int secondNumber = numbers.removeLast();
+                return firstNumber * secondNumber;
             }
         }, SOUSTRACTION {
             @Override
-            int calculate(Integer... numbers) {
-                return numbers[0] - numbers[1];
+            int calculate(ArrayDeque<Integer> numbers) {
+                int firstNumber = numbers.removeLast();
+                int secondNumber = numbers.removeLast();
+                return secondNumber - firstNumber;
             }
         }, ADDITION {
             @Override
-            int calculate(Integer... numbers) {
-                return numbers[0] + numbers[1];
+            int calculate(ArrayDeque<Integer> numbers) {
+                int firstNumber = numbers.removeLast();
+                int secondNumber = numbers.removeLast();
+                return firstNumber + secondNumber;
             }
         },
         SQRT {
             @Override
-            int calculate(Integer... numbers) {
-                return (int) Math.sqrt(numbers[0]);
+            int calculate(ArrayDeque<Integer> numbers) {
+                int firstNumber = numbers.removeLast();
+                return (int) Math.sqrt(firstNumber);
             }
         },
         MAX {
             @Override
-            int calculate(Integer... numbers) {
-                return Arrays.stream(numbers)
-                        .max(Integer::compare)
-                        .get();
+            int calculate(ArrayDeque<Integer> numbers) {
+                int length = numbers.size();
+                Integer[] list_number = new Integer[length];
+
+                for (int i = 0; i < length; i++) {
+                    list_number[i] = numbers.removeFirst();
+                }return Collections.max(Arrays.asList(list_number));
             }
         };
 
-        abstract int calculate(Integer... numbers);
+        abstract int calculate(ArrayDeque<Integer> numbers);
 
     }
 }

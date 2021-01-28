@@ -1,1 +1,5 @@
 Utiliser lambda expression dans l'enum
+
+Open close principle : ouvert aux extensions (ajout d'un nouvel opérateur)
+et fermé aux modifications (ne pas avoir à modifier la méthode public int rpnExpression(String input))
+
