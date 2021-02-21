@@ -15,9 +15,19 @@ public class RpnCalculator {
                 numbers.add(Integer.parseInt(c));
             } else {
                 Operation operation = findOperation(c);
-                int calculate = operation.calculate(numbers);
-                numbers.add(calculate);
 
+                short numberSize = (short) numbers.size();
+
+                short numberOfOperands = operation.getNumbersOfOperands(numberSize);
+                Integer[] operands = new Integer[numberOfOperands];
+
+                for (int i = 0; i < numberOfOperands; i++) {
+                    Integer operand = numbers.removeFirst();
+                    operands[i] = operand;
+                }
+                int operationResult = operation.calculate(operands);
+
+                numbers.add(operationResult);
             }
         });
         return numbers.getLast();
@@ -44,54 +54,81 @@ public class RpnCalculator {
     enum Operation {
         DIVISTION {
             @Override
-            int calculate(ArrayDeque<Integer> numbers) {
-                int firstNumber = numbers.removeLast();
-                int secondNumber = numbers.removeLast();
-                return secondNumber / firstNumber;
+            int calculate(Integer ... numbers) {
+                int firstNumber = numbers[0].intValue();
+                int secondNumber = numbers[1].intValue();
+                return firstNumber / secondNumber;
+            }
+
+            @Override
+            public short getNumbersOfOperands(short length) {
+                return 2;
             }
         }, MULTIPLICATION {
             @Override
-            int calculate(ArrayDeque<Integer> numbers) {
-                int firstNumber = numbers.removeLast();
-                int secondNumber = numbers.removeLast();
-                return firstNumber * secondNumber;
+            int calculate(Integer ... numbers) {
+                return numbers[1] * numbers[0];
+            }
+
+            @Override
+            public short getNumbersOfOperands(short length) {
+                return 2;
             }
         }, SOUSTRACTION {
             @Override
-            int calculate(ArrayDeque<Integer> numbers) {
-                int firstNumber = numbers.removeLast();
-                int secondNumber = numbers.removeLast();
-                return secondNumber - firstNumber;
+            int calculate(Integer ... numbers) {
+
+                return numbers[0] - numbers[1];
+            }
+
+            @Override
+            public short getNumbersOfOperands(short length) {
+                return 2;
             }
         }, ADDITION {
             @Override
-            int calculate(ArrayDeque<Integer> numbers) {
-                int firstNumber = numbers.removeLast();
-                int secondNumber = numbers.removeLast();
-                return firstNumber + secondNumber;
+            int calculate(Integer ... numbers) {
+
+                return numbers[0] + numbers[1];
+            }
+
+            @Override
+            public short getNumbersOfOperands(short length) {
+                return 2;
             }
         },
         SQRT {
             @Override
-            int calculate(ArrayDeque<Integer> numbers) {
-                int firstNumber = numbers.removeLast();
-                return (int) Math.sqrt(firstNumber);
+            int calculate(Integer ... numbers) {
+                return (int) Math.sqrt(numbers[0]);
+            }
+
+            @Override
+            public short getNumbersOfOperands(short length) {
+                return 1;
             }
         },
         MAX {
             @Override
-            int calculate(ArrayDeque<Integer> numbers) {
-                int length = numbers.size();
+            int calculate(Integer ... numbers) {
+               /*/*int length = numbers.length();
                 Integer[] list_number = new Integer[length];
 
                 for (int i = 0; i < length; i++) {
                     list_number[i] = numbers.removeFirst();
-                }return Collections.max(Arrays.asList(list_number));
+                }*/
+                return Collections.max(Arrays.asList(numbers));
+            }
+
+            @Override
+            public short getNumbersOfOperands(short length) {
+                return length;
             }
         };
 
-        abstract int calculate(ArrayDeque<Integer> numbers);
+        abstract int calculate(Integer... numbers);
 
+        public abstract short getNumbersOfOperands(short length);
     }
 }
 

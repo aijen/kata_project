@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="KATA_AIJEN" />
         <module name="Kata_AIJEN - Copie" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="KATA_AIJEN" target="8" />
       <module name="Kata_AIJEN - Copie" target="8" />
     </bytecodeTargetLevel>
   </component>
