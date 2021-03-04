@@ -30,21 +30,4 @@ Feature: Compute FizzBuzz
     When we compute FizzBuzz
     Then the result is "4"
 
-  Scenario: Return Buzz if 5 input
-
-    Given the number 5
-    When we compute FizzBuzz
-    Then the result is "Buzz"
-
-  Scenario: Return Fizz if 6 input
-
-    Given the number 6
-    When we compute FizzBuzz
-    Then the result is "Fizz"
-
-  Scenario: Return FizzBuzz if 15 input
-    
-    Given the number 15
-    When we compute FizzBuzz
-    Then the result is "FizzBuzz"
-
+    Scenario:

@@ -1,15 +1,12 @@
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.assertj.core.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 class LeapYearTest {
 
     @Test
-    @Order(1)
     public void should_return_false_if_2001_input(){
         //GIVEN
         int input =2001;
@@ -23,7 +20,6 @@ class LeapYearTest {
     }
 
     @Test
-    @Order(2)
     public void should_return_true_if_1996_input(){
         //GIVEN
         int input = 1996;
@@ -36,7 +32,6 @@ class LeapYearTest {
     }
 
     @Test
-    @Order(3)
     public void should_return_true_if_1992_input(){
         //GIVEN
         int input =1992;
@@ -50,7 +45,6 @@ class LeapYearTest {
     }
 
     @Test
-    @Order(4)
     public void should_return_false_if_1900_input(){
         //GIVEN
         int input = 1900;
@@ -63,7 +57,6 @@ class LeapYearTest {
     }
 
     @Test
-    @Order(5)
     public void should_return_true_if_2000_input(){
         //GIVEN
         int input = 2000;
@@ -77,7 +70,6 @@ class LeapYearTest {
     }
 
     @Test
-    @Order(6)
     public void should_return_false_if_1800_input(){
         //GIVEN
         int input = 1800;

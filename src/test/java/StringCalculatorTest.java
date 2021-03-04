@@ -1,15 +1,12 @@
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.assertj.core.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 class StringCalculatorTest {
 
     @Test
-    @Order(1)
     public void should_return_0_if_empty_input(){
         //GIVEN
         String input ="";
@@ -23,7 +20,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(2)
+
     public void should_return_1_if_1_input(){
         //GIVEN
         String intput = "1";
@@ -36,7 +33,6 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(3)
     public void should_return_3_if_1_2_input(){
         //GIVEN
         String input ="1,2";
@@ -49,7 +45,6 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(4)
     public void should_return_21_if_1_2_3_4_5_6_input(){
         //GIVEN
         String input="1,2,3,4,5,6";
@@ -62,7 +57,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(5)
+
     public void should_return_6_if_1_n2_3_input(){
         //GIVEN
         String input ="1\n2,3";
@@ -75,7 +70,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(6)
+
     public void should_throw_exception_if_1_n_input(){
         //GIVEN
         String input ="1,\n";
@@ -87,7 +82,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(7)
+
     public void should_return_3_if__n1_2_input(){
         //GIVEN
         String input ="//;\n1;2";
@@ -100,7 +95,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    @Order(8)
+
     public void should_return_negative_not_allowd_if__1_2_input(){
         //GIVEN
         String input ="-1,2";
