@@ -3,6 +3,7 @@ package football.controller;
 import football.FootballApplication;
 import football.dto.PlayerDto;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,15 +13,14 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //@RunWith(SpringRunner.class) // JUnit 4
 @SpringBootTest( classes = FootballApplication.class
         , webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
+@Disabled
 public class PlayerControllerTest {
 
     @LocalServerPort
