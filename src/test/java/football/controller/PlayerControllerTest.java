@@ -13,14 +13,18 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 //@RunWith(SpringRunner.class) // JUnit 4
 @SpringBootTest( classes = FootballApplication.class
-        , webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+               , webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT //pour ne pas avoir des collisions sur les port
 )
-@Disabled
+@Sql(value = "/script-player-controller.sql")
 public class PlayerControllerTest {
 
     @LocalServerPort
@@ -30,6 +34,10 @@ public class PlayerControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
+    /*
+    @Sql(value = "/script-player-controller.sql"
+            , config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+    */
     public void should_find_all_players() {
 
         String url = "http://localhost:" + port + "/players";
@@ -38,16 +46,15 @@ public class PlayerControllerTest {
         ResponseEntity<List<PlayerDto>> playersResponseEntity = restTemplate
                 .exchange(url, HttpMethod.GET, null, paramType);
 
-        Assertions.assertThat(playersResponseEntity.getStatusCode())
-                .isEqualTo(HttpStatus.OK);
+        assertThat(playersResponseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         List<PlayerDto> players = playersResponseEntity.getBody();
 
-        Assertions.assertThat(players).hasSize(2);
+        assertThat(players).hasSize(2);
 
         PlayerDto antoineGriezman = new PlayerDto("Antoine", "Griezmann", "Atlético de Madrid");
 
-        Assertions.assertThat(players).contains(antoineGriezman);
+        assertThat(players).contains(antoineGriezman);
 
     }
 

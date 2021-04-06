@@ -28,6 +28,7 @@ public class PlayerDto implements Serializable {
         return team;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -10,3 +10,23 @@ https://www.testcontainers.org/
 
 Tableau
 
+
+CodeWithMe
+
+@MockBean
+
+test automatiser si on utilise teradata
+
+faire un test d'integration
+
+si onn moque un repo c'est un test d'integration
+
+
+sont plus long et plus fragile (cela dépand de la base de données)
+
+
+p6spy pour intercepter les requêtes
+
+DataSoruce
+
+https://p6spy.readthedocs.io/en/latest/install.html#weblogic
